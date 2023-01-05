@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Form Validation</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container">
+		<div class="col-lg-8 col-md-10 m-auto d-block"><br>
+			<h1 class="text-center text-success">Complete Form validation javascript</h1>
+			<br>
+			<form action="#" class="bg-light p-4 rounded" onsubmit="return validation()">
+
+				<!-- UserName Input -->
+				<div class="form-group mb-3">
+					<label for="username">Username: <span class="text-danger" id="usernameID"></span></label>
+					<input type="text" name="user" id="username" class="form-control" autocomplete="off">
+				</div>
+
+				<!-- Password Input -->
+				<div class="form-group mb-3">
+					<label for="password">Password: <span class="text-danger" id="passwordID"></span></label>
+					<input type="password" name="pass" id="password" class="form-control" autocomplete="off">
+				</div>
+
+
+				<!-- Confirm Password -->
+				<div class="form-group mb-3">
+					<label for="conPassword">Confirm Password: <span class="text-danger" id="conPasswordID"></span></label>
+					<input type="password" name="conpass" id="conPassword" class="form-control" autocomplete="off">
+				</div>
+
+
+				<!-- Mobile Number -->
+				<div class="form-group mb-3">
+					<label for="mobileN"> Mobile Number: <span class="text-danger" id="MobileNUM"></span></label>
+					<input type="text" name="conpass" id="mobileN" class="form-control" autocomplete="off">
+				</div>
+
+
+				<!-- Email Address -->
+				<div class="form-group mb-3">
+					<label for="emailId"> E-mail: <span class="text-danger" id="emailIds"></span></label>
+					<input type="text" name="conpass" id="emailId" class="form-control" autocomplete="off">
+				</div>
+
+				<!-- Submit -->
+				<input type="submit" name="submit" value="Submit" class="btn btn-success btn-lg">
+			</form>
+
+		</div>
+	</div>
+
+	<script>
+		function validation() {
+			var user = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+			var conPassword = document.getElementById('conPassword').value;
+			var mobileN = document.getElementById('mobileN').value;
+			var emailId = document.getElementById('emailId').value;
+
+
+
+			// user name
+			if (user == "") {
+				document.getElementById('usernameID').innerHTML = " ** please fill the user name";
+				return false;
+			}
+			if ((user.length < 3) || (user.length > 20)) {
+				document.getElementById('usernameID').innerHTML = " ** please fill the user name between 3 and 20";
+				return false;
+			}
+			if (!isNaN(user)) {
+				document.getElementById('usernameID').innerHTML = " ** please fill the user name is only carecter";
+				return false;
+			}
+
+
+			// password
+			if (password == "") {
+				document.getElementById('passwordID').innerHTML = " ** please fill the password";
+				return false;
+			}
+			if ((password.length < 6) || (password.length > 20)) {
+				document.getElementById('passwordID').innerHTML = " ** please fill the password between 6 and 20";
+				return false;
+			}
+
+			if (password!=conPassword) {
+				document.getElementById('conPasswordID').innerHTML = " ** Confirm password is not mutch";
+				return false;
+			}
+
+			// conPassword
+			if (conPassword == "") {
+				document.getElementById('conPasswordID').innerHTML = " ** please fill the Confirm password";
+				return false;
+			}
+
+
+			// mobileN
+			if (mobileN == "") {
+				document.getElementById('MobileNUM').innerHTML = " ** please fill the Mobile";
+				return false;
+			}
+			if (mobileN.length < 10) {
+				document.getElementById('MobileNUM').innerHTML = " ** Mobile Number is 10 desite";
+				return false;
+			}
+			if (isNaN(mobileN)) {
+				document.getElementById('MobileNUM').innerHTML = " ** tis is only desited";
+				return false;
+			}
+
+
+			// emailId
+			if (emailId == "") {
+				document.getElementById('emailIds').innerHTML = " ** please fill the e-mail";
+				return false;
+			}else if (emailId.indexOf('@') <= 0) {
+				document.getElementById('emailIds').innerHTML = " ** this is not valid email";
+				return false;
+			}else if ((emailId.charAt(emailId.length-4)!='.') && (emailId.charAt(emailId.length-3)!='.'))  {
+				document.getElementById('emailIds').innerHTML = " ** this is not valid email";
+				return false;
+			}
+
+
+
+		}
+	</script>
+</body>
+</html>
